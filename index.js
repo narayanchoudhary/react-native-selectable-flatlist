@@ -158,9 +158,10 @@ class SelectableFlatlist extends Component {
 
   renderItem = ({ item }) => {
     const { state, cellItemComponent, touchStyles } = this.props;
+    const isThisitemSelect = this.isItemSelected(item);
     if (state === STATE.DEFAULT) {
       return (
-        cellItemComponent(item, { ...this.props })
+        cellItemComponent(item, isThisItemSelected { ...this.props })
       );
     }
     return (
@@ -171,13 +172,13 @@ class SelectableFlatlist extends Component {
         }}
       >
         {
-          this.isItemSelected(item) ?
+          isThisItemSelected ?
             this.renderCheck()
             :
             this.renderUncheck()
         }
         {
-          cellItemComponent(item, { ...this.props })
+          cellItemComponent(item, isThisItemSelected,  { ...this.props })
         }
       </TouchableWrapper>
     );
